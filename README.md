@@ -23,7 +23,7 @@ npx skills add metyatech/skill-post-deploy --yes --global
 
 ## Related rules
 
-The `post-change-deployment` rule module in AGENTS.md provides the invariant (always check deployment needs after code changes). This skill provides the detailed procedures.
+The post-change deployment section in the `command-execution` rule module (AGENTS.md) provides the invariant (always check deployment needs after code changes). This skill provides the detailed procedures.
 
 ## License
 
