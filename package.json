@@ -1,0 +1,26 @@
+{
+  "name": "@metyatech/skill-post-deploy",
+  "version": "1.0.0",
+  "description": "Agent skill for verifying deployment after code changes. Covers globally linked npm packages, running services, daemons, and scheduled tasks.",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "markdownlint .",
+    "verify": "npm run format && npm run lint"
+  },
+  "keywords": [
+    "agent",
+    "skill",
+    "post-deploy",
+    "verification"
+  ],
+  "author": "metyatech",
+  "license": "MIT",
+  "devDependencies": {
+    "markdownlint-cli": "^0.44.0",
+    "prettier": "^3.5.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -21,6 +21,24 @@ npx skills add metyatech/skill-post-deploy --yes --global
 - After code changes to a repository that is globally installed via `npm link`.
 - After code changes to a repository that powers a running service, daemon, or scheduled task.
 
+## Usage Examples
+
+### npm-linked package
+
+When modifying a package that is linked globally:
+
+1. Detect the link: `npm ls -g --depth=0`
+2. Rebuild: `npm run build`
+3. Verify: `my-cli --version`
+
+### Services and daemons
+
+When modifying a service or background task:
+
+1. Rebuild the service logic.
+2. Restart: `Restart-Service -Name "MyService"` (Windows) or `systemctl restart myservice` (Linux).
+3. Verify: `Get-Service -Name "MyService"` and check logs.
+
 ## Related rules
 
 The post-change deployment section in the `command-execution` rule module (AGENTS.md) provides the invariant (always check deployment needs after code changes). This skill provides the detailed procedures.
