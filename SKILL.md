@@ -1,6 +1,6 @@
 ---
 name: post-deploy
-description: Use when verifying deployment after code changes to globally linked packages (npm link), running services, daemons, or scheduled tasks. Triggers when code changes affect a globally installed CLI or a running service. Do not use for general development, CI setup, or initial deployments.
+description: Use when verifying deployment after code changes to globally linked packages, running services, daemons, or scheduled tasks. Triggers when code changes affect a globally installed tool or a running instance. Do not use for general development, CI setup, or initial deployments.
 ---
 
 # Post-change deployment procedures
@@ -9,32 +9,32 @@ description: Use when verifying deployment after code changes to globally linked
 
 ### Globally linked packages
 
-- Check npm global links: run `npm ls -g --depth=0` and look for entries with `->` pointing to a local path.
-- If the changed repo matches a globally linked package, proceed to rebuild.
+- Check for packages that are linked to a local path rather than installed from a registry.
+- If the changed repository matches a linked package, proceed to rebuild.
 
-### Running services and scheduled tasks
+### Running instances and scheduled tasks
 
-- Check for running processes associated with the repo (service names, PM2/systemd/Windows service entries).
-- Check for scheduled tasks (cron, Windows Task Scheduler) referencing the repo.
+- Check for running processes or services associated with the repository.
+- Check for scheduled tasks or background jobs referencing the repository.
 
 ## Rebuild and verify
 
-### npm-linked packages
+### Linked packages
 
-1. Run the repo's build command (e.g., `npm run build`, `tsc`).
-2. Verify the rebuilt output: run the CLI's `--version` or a smoke command.
-3. Report the verified version.
+1. Execute the repository's build procedure if applicable.
+2. Verify the rebuilt output by executing a basic command (e.g., checking version).
+3. Confirm the verified version reflects the expected state.
 
-### Services and daemons
+### Running instances and background tasks
 
-1. Rebuild the service component.
-2. Restart using the service manager (PM2 restart, systemctl restart, etc.).
+1. Rebuild the service or application component.
+2. Restart the instance using the appropriate process or service manager.
 3. Verify with deterministic evidence:
-   - New PID (compare before/after).
-   - Port check (verify listening).
-   - Service status query.
-   - Log entry showing updated behavior/version.
-4. Report the verification evidence.
+   - Identify a change in process identification (e.g., PID).
+   - Confirm active status (e.g., network port check).
+   - Query the service manager for status.
+   - Inspect logs for confirmation of updated behavior or version.
+4. Document the verification evidence.
 
 ## Completion gate
 
